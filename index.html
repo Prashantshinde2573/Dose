@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dose Speciality Coffee — Banjara Hills, Hyderabad</title>
+  <meta name="description" content="Get your perfect DOSE now! Speciality coffee at Road No 11, Banjara Hills, Hyderabad. Open 7am – 11pm." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav" id="nav">
+    <a href="#home" class="logo" aria-label="Dose Speciality Coffee">
+      <span class="logo-word">DOS<span class="logo-e"><i></i><i></i><i></i></span></span>
+      <small>Speciality Coffee</small>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#menu">Menu</a>
+      <a href="#flavours">Flavours</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="https://www.instagram.com/dose.specialitycoffee/" target="_blank" rel="noopener" class="icon-btn" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>
+      </a>
+      <button class="icon-btn" id="favBtn" aria-label="Favourites">
+        <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.2-9C1.4 8 3.3 4.5 6.8 4.5c2 0 3.4 1.2 5.2 3 1.8-1.8 3.2-3 5.2-3 3.5 0 5.4 3.5 4 6.5C19 15.6 12 20 12 20z"/></svg>
+        <span class="fav-count" id="favCount">0</span>
+      </button>
+      <a href="https://maps.app.goo.gl/yp5TFySP7TK4BcSu5" target="_blank" rel="noopener" class="pill-btn">
+        <span>Banjara Hills</span>
+        <b><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></b>
+      </a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ================= HERO (slider) ================= -->
+  <section class="hero" id="home">
+    <div class="hero-slides">
+      <div class="slide is-active" style="--img:url('https://images.unsplash.com/photo-1757949921983-ab4c911cc3fe?auto=format&fit=crop&w=2000&q=80')"></div>
+      <div class="slide" style="--img:url('https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=2000&q=80')"></div>
+      <div class="slide" style="--img:url('https://images.unsplash.com/photo-1567880905822-56f8e06fe630?auto=format&fit=crop&w=2000&q=80')"></div>
+    </div>
+    <div class="hero-shade"></div>
+
+    <div class="hero-content">
+      <span class="tag reveal-up">Welcome to Dose · Banjara Hills</span>
+      <h1 class="hero-title">
+        <span class="ln"><span>Get your perfect</span></span>
+        <span class="ln"><span><strong>DOSE</strong> of coffee.</span></span>
+      </h1>
+      <p class="hero-sub reveal-up">Speciality coffee, pulled with precision and poured with love. Step in for a slow sip or grab your daily dose on the go — every cup brewed fresh, from 7am to 11pm.</p>
+      <a href="#menu" class="btn-arrow reveal-up">
+        <span>Drink Now</span>
+        <b><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b>
+      </a>
+    </div>
+
+    <div class="hero-dots" id="heroDots">
+      <button class="is-active" aria-label="Slide 1"></button>
+      <button aria-label="Slide 2"></button>
+      <button aria-label="Slide 3"></button>
+    </div>
+
+    <div class="hero-info reveal-up">
+      <div><small>Open daily</small><strong>7am – 11pm</strong></div>
+      <div><small>Find us</small><strong>Road No 11, Banjara Hills</strong></div>
+    </div>
+  </section>
+
+  <!-- ================= COFFEE COLLECTION ================= -->
+  <section class="section collection" id="menu">
+    <div class="sec-head reveal">
+      <h2>You can taste every kind of coffee <br/>collection right here</h2>
+      <p>From a silky cappuccino to a slow-dripped cold brew — explore the Dose menu. Each cup is dialled-in by our baristas for a flavour you'll come back for.</p>
+    </div>
+
+    <div class="tabs reveal" id="coffeeTabs">
+      <button class="is-active" data-filter="all">All Coffee</button>
+      <button data-filter="hot">Hot Coffee</button>
+      <button data-filter="iced">Iced Coffee</button>
+      <button data-filter="milk">Milk Based</button>
+      <button data-filter="black">Black</button>
+      <button data-filter="dessert">Dessert</button>
+    </div>
+
+    <div class="grid" id="coffeeGrid"><!-- cards rendered by script.js --></div>
+  </section>
+
+  <!-- ================= ENVIRONMENT (split) ================= -->
+  <section class="env" id="about">
+    <div class="env-copy">
+      <h2 class="reveal">The vibe at Dose is <br/>calm, bright &amp; minimal</h2>
+      <p class="reveal">Clean white walls, soft daylight and the smell of freshly ground beans. Sitting in one of our corners with a coffee will really refresh your mind.</p>
+      <a href="https://maps.app.goo.gl/yp5TFySP7TK4BcSu5" target="_blank" rel="noopener" class="btn-arrow light reveal">
+        <span>Visit Our Café</span>
+        <b><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b>
+      </a>
+
+      <ul class="features">
+        <li class="reveal"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Hygiene Maintained</li>
+        <li class="reveal"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 0 16 0M8 8c0-2 1.8-4 4-4s4 2 4 4"/><circle cx="12" cy="12" r="1.5"/></svg>Perfect Taste, Every Time</li>
+        <li class="reveal"><svg viewBox="0 0 24 24"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14z"/><path d="M5 19l7-7"/></svg>Fresh, Calm Environment</li>
+        <li class="reveal"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16M10 10v10"/></svg>Minimal, Cosy Interior</li>
+        <li class="reveal"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9 14s1 1.5 3 1.5 3-1.5 3-1.5M9 10h.01M15 10h.01"/></svg>Mind Fresh Moments</li>
+      </ul>
+    </div>
+    <div class="env-media">
+      <img class="parallax" src="https://images.unsplash.com/photo-1765827620772-3129b91847b2?auto=format&fit=crop&w=1400&q=80" alt="Iced latte with a straw in front of green plants" loading="lazy" />
+      <div class="env-badge">
+        <span class="spin-text">
+          <svg viewBox="0 0 200 200"><defs><path id="cp" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text><textPath href="#cp" textLength="462" lengthAdjust="spacing">THE PERFECT DOSE • SPECIALITY COFFEE • </textPath></text></svg>
+        </span>
+        <span class="mini-e"><i></i><i></i><i></i></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FLAVOURS ================= -->
+  <section class="section flavours" id="flavours">
+    <div class="sec-head reveal">
+      <h2>Different flavours you can <br/>choose anytime</h2>
+      <p>Discover the flavours on our menu — each one a different little journey. From rich and chocolatey to light and nutty, there's something for every mood.</p>
+    </div>
+
+    <div class="tabs reveal" id="flavourTabs">
+      <button class="is-active" data-filter="chocolate">Chocolate</button>
+      <button data-filter="caramel">Caramel</button>
+      <button data-filter="hazelnut">Hazelnut</button>
+      <button data-filter="vanilla">Vanilla</button>
+      <button data-filter="cinnamon">Cinnamon</button>
+    </div>
+
+    <div class="grid" id="flavourGrid"></div>
+  </section>
+
+  <!-- ================= QUALITY (animated beans) ================= -->
+  <section class="quality" id="quality">
+    <div class="beans-layer" id="beansLayer" aria-hidden="true"></div>
+    <div class="quality-inner">
+      <h2 class="reveal">We never settle when it <br/>comes to quality &amp; upkeep</h2>
+      <div class="quality-side reveal">
+        <p>At Dose, we take pride in serving only the best brews — freshly roasted beans, precise extraction and a spotless bar, so every cup is an exceptional taste.</p>
+        <a href="#menu" class="btn-arrow">
+          <span>Explore The Taste</span>
+          <b><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></b>
+        </a>
+      </div>
+    </div>
+    <div class="quality-cup">
+      <img src="images/dose-ig-beans-cup.jpg" data-fallback="https://images.unsplash.com/photo-1610632380989-680fe40816c6?auto=format&fit=crop&w=900&q=80" alt="Dose cup with coffee beans" loading="lazy" />
+    </div>
+    <div class="stats">
+      <div class="reveal"><strong data-count="7">0</strong><span>am — doors open</span></div>
+      <div class="reveal"><strong data-count="11">0</strong><span>pm — last pour</span></div>
+      <div class="reveal"><strong data-count="16">0</strong><span>Hours of coffee daily</span></div>
+      <div class="reveal"><strong data-count="1">0</strong><span>Perfect dose</span></div>
+    </div>
+  </section>
+
+  <!-- ================= INSTAGRAM STRIP ================= -->
+  <section class="insta" id="insta">
+    <div class="insta-head reveal">
+      <h2>Follow the dose <span>@dose.specialitycoffee</span></h2>
+      <a href="https://www.instagram.com/dose.specialitycoffee/" target="_blank" rel="noopener" class="btn-arrow">
+        <span>Follow Us</span>
+        <b><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></b>
+      </a>
+    </div>
+    <div class="insta-track">
+      <div class="insta-row" id="instaRow"></div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer" id="contact">
+    <div class="footer-top">
+      <div class="f-brand">
+        <a href="#home" class="logo light">
+          <span class="logo-word">DOS<span class="logo-e"><i></i><i></i><i></i></span></span>
+          <small>Speciality Coffee</small>
+        </a>
+        <p>Brewing moments, inspiring connections. One cup at a time.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/dose.specialitycoffee/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a>
+          <a href="https://maps.app.goo.gl/yp5TFySP7TK4BcSu5" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Explore</h4>
+        <a href="#menu">Menu</a>
+        <a href="#flavours">Flavours</a>
+        <a href="#about">About Us</a>
+        <a href="#insta">Instagram</a>
+      </div>
+      <div class="f-col">
+        <h4>Visit Us</h4>
+        <p>Road No 11, Banjara Hills,<br/>Hyderabad, Telangana</p>
+        <a href="https://maps.app.goo.gl/yp5TFySP7TK4BcSu5" target="_blank" rel="noopener" class="u-link">Get directions →</a>
+      </div>
+      <div class="f-col">
+        <h4>Opening Hours</h4>
+        <p>Monday – Sunday<br/><strong class="hours">7:00 am – 11:00 pm</strong></p>
+      </div>
+      <div class="f-col">
+        <h4>Newsletter</h4>
+        <p>New brews &amp; offers, straight to your inbox.</p>
+        <form class="newsletter" id="newsletter">
+          <input type="email" placeholder="Your email" required aria-label="Email" />
+          <button type="submit" aria-label="Subscribe"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+        <span class="form-msg" id="formMsg"></span>
+      </div>
+    </div>
+
+    <div class="footer-giant" aria-hidden="true">
+      <span>DOS</span><span class="giant-e"><i></i><i></i><i></i></span>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Dose Speciality Coffee. All rights reserved.</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
