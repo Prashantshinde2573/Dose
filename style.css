@@ -26,14 +26,14 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 
 /* ---------- Logo (recreated Dose wordmark: DOS + three-bar E) ---------- */
 .logo { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; color: var(--white); }
-.logo-word { display: inline-flex; align-items: center; font-weight: 800; font-size: 1.55rem; letter-spacing: .02em; }
-.logo-e { display: inline-flex; flex-direction: column; justify-content: space-between; height: .72em; width: .62em; margin-left: .06em; }
-.logo-e i { display: block; height: .13em; background: currentColor; border-radius: 1px; }
-.logo-e i:nth-child(1) { width: 100%; }
-.logo-e i:nth-child(2) { width: 72%; margin-left: auto; transition: width .4s var(--ease); }
-.logo-e i:nth-child(3) { width: 100%; }
-.logo:hover .logo-e i:nth-child(2) { width: 100%; }
-.logo small { font-size: .5rem; font-weight: 500; letter-spacing: .06em; margin-top: .28rem; }
+/* Logo: bold geometric "DOS" + an "E" drawn as three equal, round-ended bars (≡) */
+.logo { align-items: flex-start; }
+.logo-word { display: inline-flex; align-items: center; font-family: "Montserrat", var(--font); font-weight: 700; font-size: 1.6rem; letter-spacing: .01em; line-height: .72; }
+.logo-e { display: inline-flex; flex-direction: column; justify-content: space-between; height: .72em; width: .6em; margin-left: .08em; }
+.logo-e i { display: block; width: 100%; height: .155em; background: currentColor; border-radius: 99px; transition: transform .45s var(--ease); }
+.logo:hover .logo-e i:nth-child(1) { transform: translateX(.06em); }
+.logo:hover .logo-e i:nth-child(3) { transform: translateX(-.06em); }
+.logo small { font-family: "Montserrat", var(--font); font-size: .52rem; font-weight: 600; letter-spacing: .01em; margin-top: .42rem; padding-left: .1em; }
 
 /* ---------- Buttons ---------- */
 .btn-arrow {
@@ -179,6 +179,7 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .card:hover { transform: translateY(-8px); box-shadow: 0 26px 50px -28px rgba(0,0,0,.35); border-color: transparent; }
 .card-media { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: var(--off); }
 .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+.flavours .card-media { aspect-ratio: 4 / 3; }
 .card:hover .card-media img { transform: scale(1.08); }
 .card-tag { position: absolute; left: 12px; top: 12px; padding: .3rem .6rem; border-radius: 6px; background: rgba(255,255,255,.9); font-size: .65rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
 .heart {
@@ -193,7 +194,7 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .card-body { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.1rem 1.1rem; gap: .5rem; }
 .card-body h3 { font-size: .92rem; font-weight: 500; }
 .card-body small { display: block; font-size: .72rem; color: var(--muted); margin-top: .2rem; }
-.price { font-weight: 700; font-size: .95rem; white-space: nowrap; }
+.price { font-size: .66rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; white-space: nowrap; padding: .35rem .6rem; border-radius: 6px; background: var(--off); }
 
 /* ---------- ENVIRONMENT ---------- */
 .env { display: grid; grid-template-columns: 1fr 1fr; background: var(--brown); color: var(--white); min-height: 640px; }
@@ -209,7 +210,7 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 }
 .features li:hover { background: rgba(255,255,255,.16); transform: translateX(8px); }
 .env-media { position: relative; overflow: hidden; }
-.env-media img { position: absolute; inset: -10% 0; width: 100%; height: 120%; object-fit: cover; will-change: transform; }
+.env-media img { position: absolute; inset: -10% 0; width: 100%; height: 120%; object-fit: cover; object-position: center 60%; will-change: transform; }
 .env-badge {
   position: absolute; left: 2rem; bottom: 2rem; width: 130px; height: 130px; border-radius: 50%;
   background: var(--white); color: var(--black); display: grid; place-items: center;
@@ -218,9 +219,8 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .spin-text { position: absolute; inset: 0; animation: spin 16s linear infinite; }
 .spin-text svg { width: 100%; height: 100%; stroke: none; }
 .spin-text text { font-size: 13px; font-weight: 600; letter-spacing: 1px; fill: var(--black); font-family: var(--font); }
-.mini-e { display: flex; flex-direction: column; gap: 5px; width: 30px; }
-.mini-e i { height: 5px; background: var(--black); border-radius: 1px; }
-.mini-e i:nth-child(2) { width: 70%; margin-left: auto; }
+.mini-e { display: flex; flex-direction: column; gap: 4px; width: 30px; }
+.mini-e i { height: 6px; background: var(--black); border-radius: 99px; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ---------- QUALITY ---------- */
@@ -294,13 +294,15 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 
 .footer-giant {
   display: flex; align-items: center; justify-content: center; gap: .04em;
-  font-size: clamp(6rem, 24vw, 22rem); font-weight: 800; line-height: .8; letter-spacing: .01em;
+  font-family: "Montserrat", var(--font);
+  font-size: clamp(6rem, 24vw, 22rem); font-weight: 700; line-height: .8; letter-spacing: .01em;
   color: rgba(255,255,255,.07); user-select: none; padding: 1rem 0 2.2rem;
 }
-.giant-e { display: inline-flex; flex-direction: column; justify-content: space-between; height: .72em; width: .62em; }
-.giant-e i { height: .13em; background: rgba(255,255,255,.07); border-radius: .02em; transition: width 1.2s var(--ease); }
-.giant-e i:nth-child(2) { width: 0; margin-left: auto; }
-.footer-giant.in .giant-e i:nth-child(2) { width: 72%; }
+.giant-e { display: inline-flex; flex-direction: column; justify-content: space-between; height: .7em; width: .6em; margin-left: .06em; }
+.giant-e i { height: .155em; width: 100%; background: rgba(255,255,255,.07); border-radius: 99px; transform: scaleX(0); transform-origin: left; transition: transform 1s var(--ease); }
+.giant-e i:nth-child(2) { transition-delay: .15s; }
+.giant-e i:nth-child(3) { transition-delay: .3s; }
+.footer-giant.in .giant-e i { transform: scaleX(1); }
 .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.1); font-size: .78rem; color: rgba(255,255,255,.5); }
 .footer-bottom a:hover { color: #fff; }
 
@@ -362,3 +364,9 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
+.card-media img, .insta-item img, .quality-cup img, .env-media img { color: transparent; }
+
+/* Logo E: bottom bar is a little shorter than the top two (as in the Dose logo) */
+.logo-e i:nth-child(3), .giant-e i:nth-child(3), .mini-e i:nth-child(3) { width: 80%; }
+.logo:hover .logo-e i:nth-child(3) { transform: translateX(-.06em); }
+.logo-e i { transition: transform .45s var(--ease), width .45s var(--ease); }

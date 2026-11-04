@@ -1,52 +1,44 @@
 // ================= DOSE Speciality Coffee =================
 (() => {
-  const U = (id, w = 700) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${w}&q=80`;
+  const I = n => `images/dose-${n}.jpg`;   // original Dose photos (Instagram + Google Maps)
+  // Unsplash backup, used only if an original photo is missing from images/
+  const UN = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
+  const FB = {
+    "maps-pourover": "1757949921983-ab4c911cc3fe", "maps-sandwich-b": "1542372147193-a7aca54189cd",
+    "ig-beans-cup": "1610632380989-680fe40816c6", "ig-duo": "1509042239860-f550ce710b93",
+    "ig-brewing": "1563090308-5a7889e40542", "ig-scooter": "1495474472287-4d71bcdd2085",
+    "ig-cup-hands": "1512568400610-62da28bc8a13", "ig-bigcup": "1517701550927-30cf4ba1dba5",
+    "ig-chairs": "1511081692775-05d0f180a065", "ig-street": "1521017432531-fbd92d768814",
+    "ig-cafe-render": "1567880905822-56f8e06fe630", "ig-selfie": "1764298490445-6add12301888",
+    "ig-perfect-dose-text": "1447933601403-0c6688de566e", "ig-speciality-text": "1447933601403-0c6688de566e",
+  };
+  const fbFor = src => { const k = (src.match(/dose-(.+)\.jpg$/) || [])[1]; return UN(FB[k] || "1610632380989-680fe40816c6"); };
+  const imgTag = (src, alt) => `<img src="${src}" alt="${alt}" loading="lazy" onerror="this.onerror=null;this.src='${fbFor(src)}'" />`;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Menu data (sample prices — edit as per real menu) ---------- */
+  /* ---------- Menu highlights (real Dose photos) ---------- */
   const coffees = [
-    { name: "Cappuccino",     note: "Espresso · steamed milk",  price: 220, tags: ["hot", "milk"],    img: U("1509042239860-f550ce710b93") },
-    { name: "Café Latte",     note: "Silky & smooth",           price: 240, tags: ["hot", "milk"],    img: U("1563090308-5a7889e40542") },
-    { name: "Iced Latte",     note: "Over ice, slow pour",      price: 260, tags: ["iced", "milk"],   img: U("1517701550927-30cf4ba1dba5") },
-    { name: "Affogato",       note: "Espresso over gelato",     price: 280, tags: ["dessert"],        img: U("1612197127729-c623fa1d0360") },
-    { name: "Espresso",       note: "Double shot",              price: 160, tags: ["hot", "black"],   img: U("1610632380989-680fe40816c6") },
-    { name: "Spanish Latte",  note: "Condensed milk, layered",  price: 280, tags: ["iced", "milk"],   img: U("1764298490445-6add12301888") },
-    { name: "Cold Brew",      note: "Steeped 18 hours",         price: 250, tags: ["iced", "black"],  img: U("1759259639354-830bc3120807") },
-    { name: "Flat White",     note: "Ristretto · micro-foam",   price: 230, tags: ["hot", "milk"],    img: U("1502462041640-b3d7e50d0662") },
+    { name: "Iced Cold Brew",        note: "Slow-steeped, over ice",       label: "Coffee",   tags: ["coffee", "togo"], img: I("maps-iced-coldbrew") },
+    { name: "Hand Pour Over",        note: "Brewed at the Dose bar",       label: "Brew Bar", tags: ["brew", "coffee"], img: I("maps-pourover") },
+    { name: "The Signature Dose",    note: "Freshly roasted beans",        label: "Coffee",   tags: ["coffee"],         img: I("ig-beans-cup") },
+    { name: "Cappuccino & Croissant",note: "The duo you can afford",       label: "Coffee",   tags: ["coffee", "food"], img: I("ig-duo") },
+    { name: "Dose Big Breakfast",    note: "Omelette, avocado & more",     label: "Food",     tags: ["food"],           img: I("maps-breakfast") },
+    { name: "Grilled Sandwich",      note: "Toasted, with fresh greens",   label: "Food",     tags: ["food"],           img: I("maps-sandwich-b") },
+    { name: "Something's Brewing",   note: "Slow coffee, done right",      label: "Brew Bar", tags: ["brew"],           img: I("ig-brewing") },
+    { name: "Your Daily Dose To Go", note: "Grab it, sip it, ride on",     label: "On The Go",tags: ["togo"],           img: I("ig-scooter") },
   ];
 
-  const flavours = {
-    chocolate: [
-      { name: "Mocha Frappe",      note: "Whipped & blended", price: 290, img: U("1718267050202-9b1b6bfb8545") },
-      { name: "Choco Shake",       note: "Thick & indulgent", price: 300, img: U("1696487773677-c0c8061fe3d2") },
-      { name: "Iced Mocha",        note: "Cold & cocoa-rich", price: 280, img: U("1598831745385-0c404c7034a9") },
-      { name: "Dark Hot Chocolate",note: "70% dark cocoa",    price: 260, img: U("1592505746058-2c74be3c2155") },
-    ],
-    caramel: [
-      { name: "Caramel Frappe",    note: "Drizzled caramel",  price: 290, img: U("1579888071069-c107a6f79d82") },
-      { name: "Caramel Iced Latte",note: "Sweet & cold",      price: 270, img: U("1728978096068-0f15dc964c4c") },
-      { name: "Caramel Cortado",   note: "Short & bold",      price: 240, img: U("1747103217713-43b8a7a3e3ba") },
-      { name: "Caramel Macchiato", note: "Marked with foam",  price: 270, img: U("1461023058943-07fcbe16d735") },
-    ],
-    hazelnut: [
-      { name: "Hazelnut Cappuccino", note: "Nutty & warm",    price: 250, img: U("1512568400610-62da28bc8a13") },
-      { name: "Hazelnut Iced Latte", note: "Toasted notes",   price: 270, img: U("1527156231393-7023794f363c") },
-      { name: "Hazelnut Flat White", note: "Velvety micro-foam", price: 250, img: U("1495474472287-4d71bcdd2085") },
-      { name: "Hazelnut Espresso",   note: "Single shot + syrup", price: 190, img: U("1559496417-e7f25cb247f3") },
-    ],
-    vanilla: [
-      { name: "Vanilla Float",       note: "Ice cream topped", price: 290, img: U("1653122025451-ec76a73f8a08") },
-      { name: "Vanilla Affogato",    note: "Bean gelato",      price: 280, img: U("1594631661960-34762327295a") },
-      { name: "Vanilla Cold Brew",   note: "Sweet cream",      price: 270, img: U("1759259639354-830bc3120807") },
-      { name: "Vanilla Bean Latte",  note: "Real vanilla",     price: 250, img: U("1563090308-5a7889e40542") },
-    ],
-    cinnamon: [
-      { name: "Cinnamon Iced Coffee",note: "Spiced & chilled", price: 260, img: U("1761673930163-8d3d6d73cd7a") },
-      { name: "Cinnamon Cappuccino", note: "Dusted on foam",   price: 240, img: U("1509042239860-f550ce710b93") },
-      { name: "Cinnamon Flat White", note: "Warm spice",       price: 240, img: U("1502462041640-b3d7e50d0662") },
-      { name: "Cinnamon Latte",      note: "Cosy classic",     price: 250, img: U("1764298490445-6add12301888") },
-    ],
-  };
+  /* ---------- Spaces (real café photos) ---------- */
+  const spaces = [
+    { name: "The Main Hall",    note: "Bright, minimal seating",  label: "Indoor",  tags: ["indoor"],  img: I("maps-interior-pano") },
+    { name: "Glass Terrace",    note: "Sunlit, open-air corner",  label: "Outdoor", tags: ["outdoor"], img: I("maps-terrace-pano") },
+    { name: "The Lounge",       note: "Soft sofas, slow sips",    label: "Indoor",  tags: ["indoor"],  img: I("maps-lounge-pano") },
+    { name: "Green Entrance",   note: "Plants all the way in",    label: "Outdoor", tags: ["outdoor"], img: I("maps-entrance-pano") },
+    { name: "Mirror Corner",    note: "The selfie spot",          label: "Indoor",  tags: ["indoor"],  img: I("maps-mirror-pano") },
+    { name: "The Café Front",   note: "Road No 11, Banjara Hills",label: "Outdoor", tags: ["outdoor"], img: I("maps-exterior") },
+    { name: "Work-Friendly Hall", note: "Space to sit & focus",   label: "Indoor",  tags: ["indoor"],  img: I("maps-hall-pano") },
+    { name: "Garden Walkway",   note: "A calm walk to your cup",  label: "Outdoor", tags: ["outdoor"], img: I("maps-walkway-pano") },
+  ];
 
   /* ---------- Favourites ---------- */
   const favs = new Set();
@@ -58,16 +50,15 @@
   };
   const heartSvg = '<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.2-9C1.4 8 3.3 4.5 6.8 4.5c2 0 3.4 1.2 5.2 3 1.8-1.8 3.2-3 5.2-3 3.5 0 5.4 3.5 4 6.5C19 15.6 12 20 12 20z"/></svg>';
 
-  const cardHTML = (p, label) => `
+  const cardHTML = (p) => `
     <article class="card">
       <div class="card-media">
-        <img src="${p.img}" alt="${p.name}" loading="lazy" />
-        ${label ? `<span class="card-tag">${label}</span>` : ""}
+        ${imgTag(p.img, p.name)}
         <button class="heart ${favs.has(p.name) ? "on" : ""}" data-name="${p.name}" aria-label="Add ${p.name} to favourites">${heartSvg}</button>
       </div>
       <div class="card-body">
         <div><h3>${p.name}</h3><small>${p.note}</small></div>
-        <span class="price">₹${p.price}</span>
+        <span class="price">${p.label}</span>
       </div>
     </article>`;
 
@@ -75,7 +66,7 @@
     const old = grid.querySelectorAll(".card");
     old.forEach(c => c.classList.add("hide"));
     setTimeout(() => {
-      grid.innerHTML = items.map(p => cardHTML(p, labelFn && labelFn(p))).join("");
+      grid.innerHTML = items.map(p => cardHTML(p)).join("");
       grid.querySelectorAll(".card").forEach((c, i) => setTimeout(() => c.classList.add("show"), 70 * i));
     }, old.length ? 280 : 0);
   }
@@ -91,7 +82,6 @@
 
   const coffeeGrid = document.getElementById("coffeeGrid");
   const flavourGrid = document.getElementById("flavourGrid");
-  const tagLabel = p => p.tags.includes("iced") ? "Iced" : p.tags.includes("dessert") ? "Dessert" : "Hot";
 
   function setupTabs(tabsId, onPick) {
     const tabs = document.getElementById(tabsId);
@@ -102,14 +92,15 @@
       onPick(b.dataset.filter);
     });
   }
-  setupTabs("coffeeTabs", f => render(coffeeGrid, f === "all" ? coffees : coffees.filter(c => c.tags.includes(f)), tagLabel));
-  setupTabs("flavourTabs", f => render(flavourGrid, flavours[f]));
+  const pick = (list, f) => f === "all" ? list : list.filter(c => c.tags.includes(f));
+  setupTabs("coffeeTabs", f => render(coffeeGrid, pick(coffees, f)));
+  setupTabs("flavourTabs", f => render(flavourGrid, pick(spaces, f)));
 
   // first render when grid scrolls into view (so the stagger is seen)
   const gridIO = new IntersectionObserver(entries => entries.forEach(en => {
     if (!en.isIntersecting) return;
-    if (en.target === coffeeGrid) render(coffeeGrid, coffees, tagLabel);
-    else render(flavourGrid, flavours.chocolate);
+    if (en.target === coffeeGrid) render(coffeeGrid, coffees);
+    else render(flavourGrid, spaces);
     gridIO.unobserve(en.target);
   }), { rootMargin: "0px 0px -10% 0px" });
   gridIO.observe(coffeeGrid);
@@ -150,10 +141,10 @@
   document.querySelectorAll(".reveal, .footer-giant").forEach(el => io.observe(el));
 
   function countUp(el) {
-    const end = +el.dataset.count, dur = 1400, t0 = performance.now();
+    const end = +el.dataset.count, dec = +(el.dataset.dec || 0), dur = 1400, t0 = performance.now();
     const step = t => {
       const p = Math.min((t - t0) / dur, 1);
-      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+      el.textContent = (end * (1 - Math.pow(1 - p, 3))).toFixed(dec);
       if (p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
@@ -189,27 +180,18 @@
     }
   }
 
-  /* ---------- Instagram strip (local Instagram photos, Unsplash fallback) ---------- */
-  const insta = [
-    ["images/dose-ig-cafe.jpg",         U("1567880905822-56f8e06fe630", 600)],
-    ["images/dose-ig-bigcup.jpg",       U("1495474472287-4d71bcdd2085", 600)],
-    ["images/dose-ig-beans-cup.jpg",    U("1610632380989-680fe40816c6", 600)],
-    ["images/dose-ig-scooter.jpg",      U("1757949921983-ab4c911cc3fe", 600)],
-    ["images/dose-ig-perfect-dose.jpg", U("1511081692775-05d0f180a065", 600)],
-    ["images/dose-ig-duo.jpg",          U("1512568400610-62da28bc8a13", 600)],
-    ["images/dose-ig-iced.jpg",         U("1517701550927-30cf4ba1dba5", 600)],
-    ["images/dose-ig-street.jpg",       U("1521017432531-fbd92d768814", 600)],
-  ];
+  /* ---------- Instagram strip (original Dose Instagram photos) ---------- */
+  const insta = ["ig-cafe-render","ig-cup-hands","ig-beans-cup","ig-scooter","ig-chairs","ig-duo","ig-bigcup","ig-street","ig-brewing","ig-selfie","ig-perfect-dose-text","ig-speciality-text"].map(I);
   const igIcon = '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>';
   const row = document.getElementById("instaRow");
-  const item = ([src, fb]) => `<a class="insta-item" href="https://www.instagram.com/dose.specialitycoffee/" target="_blank" rel="noopener"><img src="${src}" data-fallback="${fb}" alt="Dose Speciality Coffee on Instagram" loading="lazy" />${igIcon}</a>`;
+  const item = src => `<a class="insta-item" href="https://www.instagram.com/dose.specialitycoffee/" target="_blank" rel="noopener">${imgTag(src, "Dose Speciality Coffee on Instagram")}${igIcon}</a>`;
   row.innerHTML = insta.map(item).join("") + insta.map(item).join(""); // duplicated for seamless loop
 
-  // swap to fallback if a local image is missing
-  const fallback = img => { if (img.dataset.fallback && img.src !== img.dataset.fallback) img.src = img.dataset.fallback; };
-  document.querySelectorAll("img[data-fallback]").forEach(img => {
-    img.addEventListener("error", () => fallback(img), { once: true });
-    if (img.complete && img.naturalWidth === 0) fallback(img);
+  // backup for static <img> tags in the page
+  document.querySelectorAll("img[src^='images/']").forEach(img => {
+    const swap = () => { if (!img.dataset.swapped) { img.dataset.swapped = 1; img.src = fbFor(img.getAttribute("src")); } };
+    img.addEventListener("error", swap, { once: true });
+    if (img.complete && img.naturalWidth === 0) swap();
   });
 
   /* ---------- Newsletter (static — no backend) ---------- */

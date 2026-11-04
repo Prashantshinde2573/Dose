@@ -7,7 +7,7 @@
   <meta name="description" content="Get your perfect DOSE now! Speciality coffee at Road No 11, Banjara Hills, Hyderabad. Open 7am – 11pm." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -20,7 +20,7 @@
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#menu">Menu</a>
-      <a href="#flavours">Flavours</a>
+      <a href="#spaces">Our Space</a>
       <a href="#about">About Us</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -43,9 +43,9 @@
   <!-- ================= HERO (slider) ================= -->
   <section class="hero" id="home">
     <div class="hero-slides">
-      <div class="slide is-active" style="--img:url('https://images.unsplash.com/photo-1757949921983-ab4c911cc3fe?auto=format&fit=crop&w=2000&q=80')"></div>
-      <div class="slide" style="--img:url('https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=2000&q=80')"></div>
-      <div class="slide" style="--img:url('https://images.unsplash.com/photo-1567880905822-56f8e06fe630?auto=format&fit=crop&w=2000&q=80')"></div>
+      <div class="slide is-active" style="--img:url('images/dose-maps-exterior.jpg')"></div>
+      <div class="slide" style="--img:url('images/dose-maps-interior-pano.jpg')"></div>
+      <div class="slide" style="--img:url('images/dose-maps-terrace-pano.jpg')"></div>
     </div>
     <div class="hero-shade"></div>
 
@@ -77,17 +77,16 @@
   <!-- ================= COFFEE COLLECTION ================= -->
   <section class="section collection" id="menu">
     <div class="sec-head reveal">
-      <h2>You can taste every kind of coffee <br/>collection right here</h2>
-      <p>From a silky cappuccino to a slow-dripped cold brew — explore the Dose menu. Each cup is dialled-in by our baristas for a flavour you'll come back for.</p>
+      <h2>You can taste every kind of coffee <br/>&amp; food right here</h2>
+      <p>Iced cold brews, hand-poured filters, a buttery croissant or a big breakfast plate — straight from the Dose bar in Banjara Hills.</p>
     </div>
 
     <div class="tabs reveal" id="coffeeTabs">
-      <button class="is-active" data-filter="all">All Coffee</button>
-      <button data-filter="hot">Hot Coffee</button>
-      <button data-filter="iced">Iced Coffee</button>
-      <button data-filter="milk">Milk Based</button>
-      <button data-filter="black">Black</button>
-      <button data-filter="dessert">Dessert</button>
+      <button class="is-active" data-filter="all">All</button>
+      <button data-filter="coffee">Coffee</button>
+      <button data-filter="brew">Brew Bar</button>
+      <button data-filter="food">Food</button>
+      <button data-filter="togo">On The Go</button>
     </div>
 
     <div class="grid" id="coffeeGrid"><!-- cards rendered by script.js --></div>
@@ -112,7 +111,7 @@
       </ul>
     </div>
     <div class="env-media">
-      <img class="parallax" src="https://images.unsplash.com/photo-1765827620772-3129b91847b2?auto=format&fit=crop&w=1400&q=80" alt="Iced latte with a straw in front of green plants" loading="lazy" />
+      <img class="parallax" src="images/dose-maps-interior.jpg" alt="Inside Dose Speciality Coffee, Banjara Hills" loading="lazy" />
       <div class="env-badge">
         <span class="spin-text">
           <svg viewBox="0 0 200 200"><defs><path id="cp" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text><textPath href="#cp" textLength="462" lengthAdjust="spacing">THE PERFECT DOSE • SPECIALITY COFFEE • </textPath></text></svg>
@@ -123,18 +122,16 @@
   </section>
 
   <!-- ================= FLAVOURS ================= -->
-  <section class="section flavours" id="flavours">
+  <section class="section flavours" id="spaces">
     <div class="sec-head reveal">
-      <h2>Different flavours you can <br/>choose anytime</h2>
-      <p>Discover the flavours on our menu — each one a different little journey. From rich and chocolatey to light and nutty, there's something for every mood.</p>
+      <h2>Different corners you can <br/>choose anytime</h2>
+      <p>A bright indoor hall, a cosy lounge, a glass-roofed terrace and a green entrance walk — pick your spot for the day.</p>
     </div>
 
     <div class="tabs reveal" id="flavourTabs">
-      <button class="is-active" data-filter="chocolate">Chocolate</button>
-      <button data-filter="caramel">Caramel</button>
-      <button data-filter="hazelnut">Hazelnut</button>
-      <button data-filter="vanilla">Vanilla</button>
-      <button data-filter="cinnamon">Cinnamon</button>
+      <button class="is-active" data-filter="all">All Spaces</button>
+      <button data-filter="indoor">Indoor</button>
+      <button data-filter="outdoor">Outdoor</button>
     </div>
 
     <div class="grid" id="flavourGrid"></div>
@@ -154,13 +151,13 @@
       </div>
     </div>
     <div class="quality-cup">
-      <img src="images/dose-ig-beans-cup.jpg" data-fallback="https://images.unsplash.com/photo-1610632380989-680fe40816c6?auto=format&fit=crop&w=900&q=80" alt="Dose cup with coffee beans" loading="lazy" />
+      <img src="images/dose-ig-beans-cup.jpg" alt="Dose cup with coffee beans" loading="lazy" />
     </div>
     <div class="stats">
       <div class="reveal"><strong data-count="7">0</strong><span>am — doors open</span></div>
       <div class="reveal"><strong data-count="11">0</strong><span>pm — last pour</span></div>
       <div class="reveal"><strong data-count="16">0</strong><span>Hours of coffee daily</span></div>
-      <div class="reveal"><strong data-count="1">0</strong><span>Perfect dose</span></div>
+      <div class="reveal"><strong data-count="4.8" data-dec="1">0</strong><span>★ Google rating</span></div>
     </div>
   </section>
 
@@ -195,13 +192,14 @@
       <div class="f-col">
         <h4>Explore</h4>
         <a href="#menu">Menu</a>
-        <a href="#flavours">Flavours</a>
+        <a href="#spaces">Our Space</a>
         <a href="#about">About Us</a>
         <a href="#insta">Instagram</a>
       </div>
       <div class="f-col">
         <h4>Visit Us</h4>
-        <p>Road No 11, Banjara Hills,<br/>Hyderabad, Telangana</p>
+        <p>8-2, 616/B/2/D, Rd Number 11,<br/>near Katriya Hotel &amp; Towers,<br/>Banjara Hills, Hyderabad 500034</p>
+        <a href="tel:+919666940099" class="u-link">096669 40099</a><br/>
         <a href="https://maps.app.goo.gl/yp5TFySP7TK4BcSu5" target="_blank" rel="noopener" class="u-link">Get directions →</a>
       </div>
       <div class="f-col">
